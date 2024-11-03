@@ -1,9 +1,9 @@
-# Your Name Here
+# Caleb Egbert
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# October 31st, 2024
+# Lab 7
+# Lab Section: 12
+# Sources, people worked with, help given to:
 # your
 # comments
 # here
@@ -16,8 +16,18 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
+while True:
+    upper_bound = input("Enter a positive integer for factorial calculation: ")
+    if upper_bound.isdigit() and int(upper_bound) > 0:
+        upper_bound = int(upper_bound)
+        break
+    else:
+        print("Invalid input. Please enter a positive number.")
+
 
 factorial = 1
+for i in range(1, upper_bound + 1):
+    factorial *= i
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -39,6 +49,15 @@ print("*"*75)
 
 num_sum = 0 
 
+while True:
+    user_input = input("Enter a number to add to the sum or type 'exit' to finish: ")
+    if user_input.lower() == 'exit':
+        break
+    if user_input.lstrip('-').isdigit():
+        num_sum += int(user_input)
+    else:
+        print("Invalid input. Please enter a number or 'exit'.")
+
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +78,27 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while True:
+    expression = input("Enter an operation (e.g., 5 + 3) or type 'exit' to finish: ")
+    if expression.lower() == 'exit':
+        break
+    expression = expression.replace(" ", "")
+    if '+' in expression:
+        operand1, operand2 = expression.split('+')
+        result = int(operand1) + int(operand2)
+    elif '-' in expression:
+        operand, operand2 = expression.split('+')
+        result = int(operand1) - int(operand2)
+    elif '*' in expression:
+        operand1, operand2 = expression.split('*')
+        result = int(operand1) * int(operand2)
+    elif '/' in expression:
+        operand1, operand2 = expression.split('/')
+        result = int(operand1) / int(operand2)
+    elif '%' in expression:
+        operand1, operand2 = expression.split('%')
+        result = int(operand1) % int(operand2)
+    else:
+        print("Invalid operation. Please enter a valid operation")
+        continue
+    print(f"The result of {expression} is {result}")
